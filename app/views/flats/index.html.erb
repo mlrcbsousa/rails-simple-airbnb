@@ -1,0 +1,51 @@
+<!-- app/views/flats/index.html.erb -->
+
+<div class="row">
+  <div class="col-12">
+    <h1>All our Flats</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <p>You searched for $WHERE We found $VAR flats out of <strong><%= @flats.count %></strong> on our website.</p>
+  </div>
+</div>
+<div class="row">
+
+  <% @flats.each do |flat| %>
+
+    <p><%= flat.content[0...144] %></p>
+
+    <div class="col-4">
+      <div class="flat-card">
+        <div class="flat-card-image"></div>
+        <div class="flat-card-content">
+          <div class="flat-card-title">
+            <h4><%= flat.name %></h4>
+          </div>
+          <p><%= flat.address %></p>
+          <div class="flex">
+            <i class="material-icons mr-2">people</i>
+            <span><%= flat.number_of_guests %></span>
+            <div class="flex ml-3">
+              <i class="material-icons mr-2">euro_symbol</i>
+              <%= flat.price_per_night %>
+            </div>
+          </div>
+        </div>
+        <div class="flat-card-actions">
+          <%= link_to 'More info', flat_path(flat) %>
+          <%= link_to 'Edit', flat_path(flat), class: "ml-3 text-warning"%>
+          <%= link_to 'Remove',
+              flat_path(flat),
+              method: :delete,
+              data: { confirm: "Are you sure?" },
+              class: "ml-3 text-danger" %>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+
+</div>
+
