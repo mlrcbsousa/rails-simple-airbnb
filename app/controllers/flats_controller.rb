@@ -2,7 +2,13 @@ class FlatsController < ApplicationController
   before_action :set_flat, only: %i[show edit update destroy]
 
   def index
-    @flats = Flat.all
+    @total = Flat.count
+    if params[:query].nil?
+      @flats = Flat.all
+    else
+      @query = params[:query]
+      @flats = Flat.where("name LIKE '%#{params[:query]}%'")
+    end
   end
 
   def new

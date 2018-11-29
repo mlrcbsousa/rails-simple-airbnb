@@ -1,9 +1,10 @@
-<nav class="navbar">
+<nav class="my-navbar">
   <%= link_to 'Simple AirBnB', flats_path, class: "navbar-brand" %>
-  <%= link_to 'Add Flat', new_flat_path, class: "btn btn-primary" %>
-  <div class="navbar-collapse">
-    <div class="ml-auto flex">
-      <form action="" class="form-inline"></form>
-    </div>
+  <div class="nav-right">
+    <form class="form-inline" accept="/flats" method="get">
+      <input class="form-control" name="query" type="search" placeholder="Search">
+      <button class="btn btn-success" type="submit">Search</button>
+    </form>
+    <%= link_to 'Add Flat', new_flat_path, class: "btn btn-primary" %>
   </div>
 </nav>

@@ -3,12 +3,14 @@
 
   <div class="row">
     <div class="col-xs-12">
-      <h1>All our Flats (<%= @flats.count %>)</h1>
+      <h1>All our Flats <%= "(#{@total})" if @query.nil? %></h1>
     </div>
   </div>
   <div class="row">
     <div class="col-xs-12">
-      <p>You searched for $WHERE We found $VAR flats out of <strong><%= @flats.count %></strong> on our website.</p>
+      <% unless @query.nil? %>
+        <p>You searched for <em class="text-primary">"<%= @query %>"</em>.. We found <strong class="text-primary"><%= @flats.count %></strong> flats out of <strong><%= @total %></strong> on our website.</p>
+      <% end %>
     </div>
   </div>
   <div class="row">
